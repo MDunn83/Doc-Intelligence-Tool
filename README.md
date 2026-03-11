@@ -48,7 +48,7 @@ You can use your own, but chose the following for this pilot project:
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/mdunn83/Doc-Intelligence-Tool.git
+git clone https://github.com/MDunn83/Doc-Intelligence-Tool.git
 cd Doc-Intelligence-Tool
 ```
 
