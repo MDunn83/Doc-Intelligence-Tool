@@ -1,75 +1,102 @@
-
-Readme · MD
-Copy
-
 # Doc-Intelligence-Tool
 
-Document intelligence tool that enables natural language querying across systems engineering standards and technical guidebooks using LangChain and Retrieval-Augmented Generation (RAG).
+A suite of AI-powered document intelligence tools built with LangChain 
+and Retrieval-Augmented Generation (RAG), designed for systems engineers 
+and technical program managers working with complex technical 
+specifications and standards.
 
-Instead of manually searching through hundreds of pages of standards and guidebooks, ask questions in plain English and get answers pulled directly from the source documents — with citations.
+Instead of manually searching through hundreds of pages of standards 
+and guidebooks, ask questions in plain English and get answers pulled 
+directly from the source documents — with citations.
 
 ---
 
-## What It Does
+## Tools
 
-- Loads and indexes a collection of systems engineering and DevSecOps reference documents
-- Accepts natural language questions
-- Retrieves the most relevant document chunks using semantic search + reranking
-- Returns answers grounded in the source documents with page-level citations
+### v1.0 — Standards & Guidebook Q&A (`v1_QA/`)
+Natural language querying across a collection of systems engineering 
+standards and technical guidebooks. Ask questions in plain English and 
+get answers grounded in the source documents with page-level citations.
 
 **Example queries:**
 - *"What are the consequences of poor requirements?"*
 - *"Summarize the systems engineering process"*
+- *"What does the DevSecOps guide say about continuous integration?"*
+
+**Key Features:**
+- Semantic search + FlashRank reranking for improved retrieval quality
+- Self-query retrieval — filter results by specific document
+- Page-level citations with every answer
+- Conversational memory across a session
+
+---
+
+### v2.0 — SHALL Requirements Auditor (`v2_shall_auditor/`)
+Automatically extracts SHALL statements from a performance specification 
+and evaluates each one against a knowledge base of systems engineering 
+standards — improving requirement quality before development begins.
+
+**Example findings:**
+- REQ-005 *"The system SHALL handle a lot of employees without slowing 
+  down"* → **NON-COMPLIANT** — "a lot" and "without slowing down" are 
+  not quantifiable and cannot be verified
+- REQ-009 *"The system SHALL sometimes notify employees"* → 
+  **NON-COMPLIANT** — "sometimes" fails to define triggering conditions
+
+**Key Features:**
+- Automatic SHALL statement extraction from any PDF
+- LLM selects the most relevant standard(s) for each requirement
+- FlashRank reranking for improved retrieval quality
+- Citation tracking with source document and page number
+- Temporary vector DB per audit session — no data persistence
 
 ---
 
 ## Document Sources
 
-You can use your own, but chose the following for this pilot project:
+Both tools use the same knowledge base. You can swap in your own 
+documents — the pipeline is document-agnostic.
 
-- `MIL-STD-882E.pdf`
-- `DOD SysEng Guidebook.pdf`
-- `Scrum-Guide-US-2020.pdf`
-- `DOD_DevSecOps Fundamentals.pdf`
+Current knowledge base:
+- `MIL-STD-882E.pdf` — System Safety
+- `DOD SysEng Guidebook.pdf` — Systems Engineering best practices
+- `Scrum-Guide-US-2020.pdf` — Agile/Scrum methodology
+- `DOD_DevSecOps Fundamentals.pdf` — DevSecOps practices
 
 ---
 
 ## Tech Stack
 
 - **LangChain** — RAG pipeline orchestration
-- **OpenAI** — Embeddings and LLM (gpt-3.5-turbo)
+- **Google Gemini** (gemini-flash-latest + gemini-embedding-001) — LLM 
+  and embeddings
 - **ChromaDB** — Vector store
-- **FlashRank** — Reranking for improved retrieval quality
+- **FlashRank** (ms-marco-MiniLM-L-12-v2) — Cross-encoder reranking
 - **PyPDF** — PDF document loading
+- **Google Colab** — Runtime environment
 
 ---
 
 ## Setup
 
-### 1. Clone the repo
-```bash
-git clone https://github.com/MDunn83/Doc-Intelligence-Tool.git
-cd Doc-Intelligence-Tool
+### 1. Open in Google Colab
+Both notebooks are designed to run in Google Colab — no local 
+installation required.
+
+### 2. Add your Google API key
+In Colab, go to the 🔑 Secrets tab in the left sidebar and add:
+```
+GOOGLE_API_KEY = your-key-here
 ```
 
-### 2. Install dependencies
-```bash
-pip install langchain langchain-community langchain-openai langchain-chroma flashrank "numpy<2"
-```
+### 3. Upload your PDF documents
+Upload your standards PDFs and (for v2) your requirements PDF directly 
+to the Colab session.
 
-### 3. Add your OpenAI API key
-Create a `.env` file in the root directory:
-```
-OPENAI_API_KEY=your-key-here
-```
+### 4. Run all cells in order
 
-### 4. Add your PDF documents
-Place your PDFs in the project root directory.
-
-### 5. Run the notebook
-Open `Doc-Intelligence-Tool.ipynb` in Jupyter and run all cells.
-
-> **Note:** The first run will embed your documents (~$0.50 one-time cost). Subsequent runs should load from the saved vector store at no additional cost.
+> **Note:** The first run will embed your documents. Subsequent runs 
+> load from the saved vector store at no additional cost.
 
 ---
 
@@ -77,17 +104,17 @@ Open `Doc-Intelligence-Tool.ipynb` in Jupyter and run all cells.
 
 | Version | Tool | Status |
 |---------|------|--------|
-| v1.0 | MIL-STD Q&A Tool — natural language querying of SE standards | ✅ Complete |
-| v2.0 | Requirements Quality Checker — evaluates SHALL statements against SE best practices | 🔄 In progress |
-| v3.0 | Verification Method Generator — auto-generates Section 4 verification methods from requirements | 📋 Planned |
+| v1.0 | Standards & Guidebook Q&A | ✅ Complete |
+| v2.0 | SHALL Requirements Auditor | ✅ Complete |
+| v3.0 | Verification Method Generator — auto-generates Section 4 verification methods from Section 3 requirements using Graph RAG | 📋 Planned |
 
 ---
 
 ## Security
 
-- Never commit your `.env` file
-- Add `.env` and `docs/chroma/` to your `.gitignore`
-- Anyone cloning this repo needs their own OpenAI API key
+- Never commit your API key
+- Add `.env` to your `.gitignore` if running locally
+- Anyone cloning this repo needs their own Google API key to run it
 
 ---
 
