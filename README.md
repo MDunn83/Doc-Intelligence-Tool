@@ -118,4 +118,4 @@ to the Colab session.
 
 ---
 
-*Built as part of a Defense PM → AI Product Manager transition portfolio*
+*Built to solve real problems encountered managing large-scale technical programs — and to explore what's possible when AI meets program management workflows.*
