@@ -106,8 +106,7 @@ to the Colab session.
 |---------|------|--------|
 | v1.0 | Standards & Guidebook Q&A | ✅ Complete |
 | v2.0 | SHALL Requirements Auditor | ✅ Complete |
-| v3.0 | Verification Method Generator — auto-generates Section 4 verification methods from Section 3 requirements using Graph RAG | 📋 Planned |
-
+| v3.0 | Verification Method Generator — generates industry standard/guidebook-compliant verification methods for each SHALL requirement using RAG-grounded LLM generation | 📋 Planned |
 ---
 
 ## Security
