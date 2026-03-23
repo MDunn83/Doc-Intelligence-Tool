@@ -68,6 +68,7 @@ Current knowledge base:
 ## Tech Stack
 
 - **LangChain** — RAG pipeline orchestration
+- **OpenAI** LLM and embeddings
 - **Google Gemini** (gemini-flash-latest + gemini-embedding-001) — LLM 
   and embeddings
 - **ChromaDB** — Vector store
@@ -76,27 +77,19 @@ Current knowledge base:
 - **Google Colab** — Runtime environment
 
 ---
-
 ## Setup
 
-### 1. Open in Google Colab
-Both notebooks are designed to run in Google Colab — no local 
-installation required.
+1. Open in Google ColabBoth notebooks are designed to run in Google Colab — no local installation required.
 
-### 2. Add your Google API key
-In Colab, go to the 🔑 Secrets tab in the left sidebar and add:
-```
-GOOGLE_API_KEY = your-key-here
-```
+2. Add your API KeysIn Colab, go to the 🔑 Secrets tab in the left sidebar. Depending on which tool you are running, add the following:
+   
+   - For V1 (Standards Q&A): Add OPENAI_API_KEY.
+   - For V2 (ARQA/SHALL Auditor): Add GOOGLE_API_KEY.
 
-### 3. Upload your PDF documents
-Upload your standards PDFs and (for v2) your requirements PDF directly 
-to the Colab session.
+3. Upload your PDF documentsUpload your technical standards or requirements PDFs directly to the Colab session storage.
 
-### 4. Run all cells in order
-
-> **Note:** The first run will embed your documents. Subsequent runs 
-> load from the saved vector store at no additional cost.
+4. Run all cells in order
+  > **Note:** The first run will embed your documents into a ChromaDB vector store. Subsequent runs will load from this saved store to optimize performance and reduce API costs.
 
 ---
 
