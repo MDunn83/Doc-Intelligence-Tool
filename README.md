@@ -3,7 +3,7 @@
 A suite of AI-powered document intelligence tools built with LangChain 
 and Retrieval-Augmented Generation (RAG), designed for systems engineers 
 and technical program managers working with complex technical 
-specifications and standards.
+specifications and standards. 
 
 Instead of manually searching through hundreds of pages of standards 
 and guidebooks, ask questions in plain English and get answers pulled 
@@ -13,7 +13,7 @@ directly from the source documents — with citations.
 
 ## Tools
 
-### v1.0 — Standards & Guidebook Q&A (`v1_QA/`)
+### v1.0 — Standards & Guidebook Q&A (`v1_Query/`)
 Natural language querying across a collection of systems engineering 
 standards and technical guidebooks. Ask questions in plain English and 
 get answers grounded in the source documents with page-level citations.
@@ -31,7 +31,7 @@ get answers grounded in the source documents with page-level citations.
 
 ---
 
-### v2.0 — SHALL Requirements Auditor (`v2_shall_auditor/`)
+### v2.0 — Automated Requirements Quality Assistant (`v2_ARQA/`)
 Automatically extracts SHALL statements from a performance specification 
 and evaluates each one against a knowledge base of systems engineering 
 standards — improving requirement quality before development begins.
@@ -83,8 +83,8 @@ Current knowledge base:
 
 2. Add your API KeysIn Colab, go to the 🔑 Secrets tab in the left sidebar. Depending on which tool you are running, add the following:
    
-   - For V1 (Standards Q&A): Add OPENAI_API_KEY.
-   - For V2 (ARQA/SHALL Auditor): Add GOOGLE_API_KEY.
+   - For V1 (Query): Add OPENAI_API_KEY.
+   - For V2 (ARQA): Add GOOGLE_API_KEY.
 
 3. Upload your PDF documentsUpload your technical standards or requirements PDFs directly to the Colab session storage.
 
@@ -97,8 +97,8 @@ Current knowledge base:
 
 | Version | Tool | Status |
 |---------|------|--------|
-| v1.0 | Standards & Guidebook Q&A | ✅ Complete |
-| v2.0 | SHALL Requirements Auditor | ✅ Complete |
+| v1.0 | Query | ✅ Complete |
+| v2.0 | ARQA | ✅ Complete |
 | v3.0 | Verification Method Generator — generates industry standard/guidebook-compliant verification methods for each SHALL requirement using RAG-grounded LLM generation | 📋 Planned |
 ---
 
