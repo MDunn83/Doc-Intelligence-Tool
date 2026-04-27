@@ -1,4 +1,4 @@
-# Automated Requirements Quality Assistant
+# Automated Requirements Quality Assistant (ARQA)
 
 > *Technical standards don't read themselves. This tool does.*
 
