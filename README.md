@@ -1,4 +1,4 @@
-# Doc-Intelligence-Tool
+# Automated Requirements Quality Assistant
 
 > *Technical standards don't read themselves. This tool does.*
 
