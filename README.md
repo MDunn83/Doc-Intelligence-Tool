@@ -4,7 +4,7 @@
 
 An AI-powered document intelligence suite built with LangChain and RAG (Retrieval-Augmented Generation), designed for systems engineers and technical program managers working with complex specifications and standards.
 
-Instead of manually searching through hundreds of pages of guidebooks, ask questions in plain English and get answers pulled directly from the source documents — with page-level citations.
+Instead of manually searching through hundreds of pages of guidebooks, ask questions in plain English and get answers pulled directly from the source documents, with page-level citations.
 
 ---
 
